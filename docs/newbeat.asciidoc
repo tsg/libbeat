@@ -1,7 +1,7 @@
 = Developer guide: creating a new Beat
 
 This guide walks you through the steps for creating a new Elastic Beat.
-The Beats are a collection of lightweight daemons that collection
+The Beats are a collection of lightweight daemons for collecting
 operational data from your servers and ship it to Logstash or Elasticsearch.
 The common parts from all Beats are placed in the libbeat library, which
 contains packages for sending data to Elasticsearch and Logstash, for
@@ -45,10 +45,11 @@ data processing modules like filtering or sampling.
 
 image:./images/beat_overview.png[Beat overview architecture]
 
-An event is JSON like object (Golang type `map[string]interface{}`) that
-contains the collected data and which is indexed into Elasticsearch. The only
+An event is a JSON like object (Golang type `map[string]interface{}`) 
+containing the collected data to be indexed into Elasticsearch. The only
 rules are that it must contain a `timestamp` field and a `type` field. Beyond
-that, it doesn't matter what these events contain or how often they are created.
+that, it doesn't matter which additional fields these events contain or how
+often they are created.
 Here is an example Topbeat event:
 
 [source,json]
@@ -96,7 +97,7 @@ type Beater interface {
 ----------------------------------------------------------------------
 
 The `Beat` parameter received by most of these methods contains data about the
-Beat, things like the name, version and common configuration options.
+Beat including the beat its name, version and common configuration options.
 
 Let's go through each of these methods and look at a sample implementation.
 
@@ -118,7 +119,7 @@ input:
   procs: [".*"]
 ----------------------------------------------------------------------
 
-And here are the corresponding Go structures:
+And here are the matching Go structures:
 
 [source,go]
 ----------------------------------------------------------------------
