@@ -1,0 +1,4 @@
+= Beats platform reference
+
+include::./newbeat.asciidoc[]
+
