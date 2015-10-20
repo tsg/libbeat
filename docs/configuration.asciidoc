@@ -6,7 +6,7 @@ http://yaml.org/[YAML] for its syntax. It consists of the following sections:
 
 * <<configuration-shipper>>
 * <<configuration-output>>
-* <<configuration-logging>
+* <<configuration-logging>>
 * <<configuration-run-options>>
 
 [[configuration-shipper]]
@@ -776,6 +776,8 @@ logging:
 In addition to the logging system, the logging output configuration can be
 modified from <<command-line-options, command line>>.
 
+==== Logging Options
+
 ===== to_syslog
 
 Send all logging output to syslog if enabled. For non Windows systems default
@@ -796,23 +798,23 @@ all the debug messages related to event publishing.
 
 Log rotation for file output can be configured in the files subsection.
 
-====== files.path
+===== files.path
 
 The path setting sets the directory log files will be written to. For Windows
 systems the default path is C:\\ProgramData\<beat-name>\Logs. Default for
 non-Windows systems is /var/log/<beat-name>.
 
-====== files.name
+===== files.name
 
 Defines the name of the file where logs are written to. By default, the
 Beat's name is used.
 
-====== files.rotateeverybytes
+===== files.rotateeverybytes
 
 Maximum Log file size. If limit is reached a new log file will be generated.
 Default log file size limit is 10485760 (=10MB).
 
-====== files.keepfiles
+===== files.keepfiles
 
 Number of most recent rotated log files to keep on disc. Older files will be
 deleted during log rotation. Default value is 7. The keepfiles options has to be
